@@ -41,8 +41,3 @@ export function getUser() {
   const token = getToken();
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
-
-export function checkToken() {
-  return usersAPI.checkToken()
-    .then(dateStr => new Date(dateStr));
-}
