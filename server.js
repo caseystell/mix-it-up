@@ -23,6 +23,10 @@ const port = process.env.PORT || 3001;
 app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
 
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use('/api/products', ensureLoggedIn, require('./routes/api/products'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
 app.get('/*', function(req, res) {
