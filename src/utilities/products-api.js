@@ -14,9 +14,9 @@ export function createProduct(formData) {
 }
 
 export function editProduct(productId) {
-  return sendRequest(BASE_URL, 'POST', { productId });
+  return sendRequest(`${BASE_URL}/${productId}`, 'POST', { productId });
 }
 
 export function deleteProduct(productId) {
-  return sendRequest(BASE_URL, 'POST', { productId });
+  return sendRequest(`${BASE_URL}/${productId}`, 'POST', { productId });
 }
