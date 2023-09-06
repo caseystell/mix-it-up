@@ -1,9 +1,18 @@
 import './CreateProductPage.css';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
 
 export default function CreateProductPage({ addProduct, setProducts }) {
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        title: "",
+        img: "",
+        condition: "",
+        category: "",
+        description: "",
+        price: 1,
+    })
+    const navigate = useNavigate();
 
     function handleChange(evt) {
         const newFormData = {...formData, [evt.target.name]: evt.target.value };
@@ -13,6 +22,7 @@ export default function CreateProductPage({ addProduct, setProducts }) {
     function handleAddProduct(evt) {
         evt.preventDefault();
         addProduct(formData);
+        navigate('/products');
     }
     
     useEffect(function() {
@@ -27,12 +37,13 @@ export default function CreateProductPage({ addProduct, setProducts }) {
         <>
             <h1>List a product!</h1>
             <form className="NewProductForm" onSubmit={handleAddProduct}>
-                <label className="newProductLabel h2 grayText"><h2>Photos</h2></label>
-                <input className="formInput btn"
+                <label className="newProductLabel h2 grayText"><h2>Photo URL</h2></label>
+                <input className="formInput"
                     name="img"
-                    type="file"
+                    type="url"
                     value={formData.img}
                     onChange={handleChange}
+                    placeholder='Paste your photo URL (include "https://")'
                 />
                 <h2 className="grayText">Product Info</h2>
                 <label className="newProductLabel h4 grayText"><h4>Title</h4></label>
@@ -67,6 +78,7 @@ export default function CreateProductPage({ addProduct, setProducts }) {
                     value={formData.condition}
                     onChange={handleChange}
                 >
+                    <option value={"Select One"}>Select one</option>
                     <option value={"New"}>New: An unopened, unused item</option>
                     <option value={"Like New"}>Like New: An unused item without original tags/packaging</option>
                     <option value={"Good"}>Good: A few minor flaws, fully functional</option>

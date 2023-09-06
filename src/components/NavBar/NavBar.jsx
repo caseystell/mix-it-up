@@ -10,8 +10,6 @@ export default function NavBar({ user, setUser, categoriesRef, activeCat, setAct
 
   return (
     <nav>
-      <Link to="/products">Shop</Link>
-      &nbsp; | &nbsp;
       <Link to="/orders">Order History</Link>
       &nbsp; | &nbsp;
       <Link to="/favorites"><span className="fa fa-heart-o"></span></Link>
