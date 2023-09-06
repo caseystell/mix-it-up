@@ -1,6 +1,6 @@
 import './CreateProductPage.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
 
 export default function CreateProductPage({ addProduct, setProducts }) {
@@ -34,7 +34,7 @@ export default function CreateProductPage({ addProduct, setProducts }) {
     }, []);
 
     return (
-        <>
+        <div className="createProductPage">
             <h1>List a product!</h1>
             <form className="NewProductForm" onSubmit={handleAddProduct}>
                 <label className="newProductLabel h2 grayText"><h2>Photo URL</h2></label>
@@ -55,7 +55,7 @@ export default function CreateProductPage({ addProduct, setProducts }) {
                     placeholder="What are you selling?"
                 />
                 <label className="newProductLabel h4 grayText"><h4>Description</h4></label>
-                <input className="formInput"
+                <input className="formInput descriptionInput"
                     name="description"
                     type="text"
                     value={formData.description}
@@ -94,8 +94,12 @@ export default function CreateProductPage({ addProduct, setProducts }) {
                     placeholder="$"
                 />
                 <br />
-                <button type="submit" className="btn" >List my item!</button>
+                <div className="buttonWrapper">
+                    <button type="submit" className="btn" >List my item!</button>
+                    <Link to="/products">Cancel</Link>
+                    <button className="returnToTop btn fa fa-arrow-up" onClick={ useEffect(() => { window.scrollTo(0,0) }, []) }></button>
+                </div>
         </form>
-      </>
+      </div>
     );
   }

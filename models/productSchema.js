@@ -2,7 +2,7 @@ const Schema = require('mongoose').Schema;
 
 const productSchema = new Schema({
   title: { type: String, required: true },
-  img: { type: Buffer, contentType: String },
+  img: { type: String },
   category: {type: Schema.Types.ObjectId, ref: 'Category'},
   condition: { 
     type: String,

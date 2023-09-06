@@ -10,6 +10,7 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
       {cat}
     </li>
   );
+  console.log(`These are my categories: ${cats}`)
   return (
     <ul className="CategoryList">
       {cats}

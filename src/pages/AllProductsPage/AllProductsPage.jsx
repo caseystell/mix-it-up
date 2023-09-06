@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './AllProductsPage.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import * as productsAPI from '../../utilities/products-api';
 
@@ -8,23 +9,24 @@ export default function AllProductsPage({ handleAddToOrder }) {
   const productCards = products.map((product) => 
     <ProductCard
       product={product}
-      key={product._id}
+      products={products}
+      setProducts={setProducts}
       handleAddToOrder={handleAddToOrder}
+      key={product._id}
     />
   );
 
   useEffect(function() {
     async function getProducts() {
-      const products = await productsAPI.getAll();
-      setProducts(products);
+      const allProducts = await productsAPI.getAll();
+      setProducts(allProducts);
     }
     getProducts();
   }, []); 
   
   return (
-    <>
-      <h1>All Products</h1>
+    <div className="allProductsPage">
       <ul>{productCards}</ul>
-    </>
+    </div>
   );
 }

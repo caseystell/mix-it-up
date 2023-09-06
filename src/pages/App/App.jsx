@@ -64,7 +64,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/products" element={<AllProductsPage handleAddToOrder={handleAddToOrder}/>} />
               <Route path="/products/new" element={<CreateProductPage addProduct={addProduct} setProducts={setProducts}/>} />
-              <Route path="/products/:productId" element={<ProductDetailPage products={products} />} />
+              <Route path="/products/:productId" element={<ProductDetailPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/orders/new" element={<NewOrderPage cart={cart} handleCheckout={handleCheckout} />}/>
               <Route path="/favorites" element={<FavoritesPage />} />

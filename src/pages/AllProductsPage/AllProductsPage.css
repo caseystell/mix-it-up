@@ -1,0 +1,5 @@
+.allProductsPage > ul {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}

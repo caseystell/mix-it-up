@@ -1,5 +1,6 @@
 * {
     font-family: 'Happy Monkey', cursive;
+    text-decoration: none !important;
 }
   
 .btn, .btn:visited {
@@ -8,20 +9,16 @@
     border: #EA2AD7 1px solid;
     border-radius: 3px;
     padding: 0.5rem;
-    text-decoration: none;
+    transition: all .2s ease-in-out;
 }
   
 .btn:hover {
-    background-color: #FFFFFF;
-    color: #EA2AD7;
-    border: #EA2AD7 1px solid;
     cursor: pointer;
-    text-decoration: none;
+    transform: scale(1.1);
 }
   
 Link, Link:visited {
     color: #1E1E1E;
-    text-decoration: none;
 }
   
 h1 {

@@ -1,3 +1,30 @@
 .fa {
     color: #EA2AD7;
+    font-size: 1.2rem;
+    transition: all .2s ease-in-out; 
+    padding: 0.3rem;
+}
+
+.fa:hover {
+    transform: scale(1.2); 
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.5rem 1rem;
+}
+
+.categoryList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+nav h1 {
+    padding-right: 23rem;
+    font-size: 3rem;
+    text-decoration: none;
 }
