@@ -33,6 +33,8 @@ export default function CreateProductPage({ addProduct, setProducts }) {
         getProducts();
     }, []);
 
+
+
     return (
         <div className="createProductPage">
             <h1>List a product!</h1>
@@ -69,7 +71,25 @@ export default function CreateProductPage({ addProduct, setProducts }) {
                     value={formData.category}
                     onChange={handleChange}
                 >
-                    <option value={1}>1</option>
+                    <option value={"Automotive"}>Automotive</option>
+                    <option value={"Baby"}>Baby</option>
+                    <option value={"Books"}>Books</option>
+                    <option value={"Clothing, Shoes & Accessories"}>Clothing, Shoes & Accessories</option>
+                    <option value={"Collectibles"}>Collectibles</option>
+                    <option value={"Electronics"}>Electronics</option>
+                    <option value={"Furniture"}>Furniture</option>
+                    <option value={"Health & Beauty"}>Health & Beauty</option>
+                    <option value={"Home Goods & Decor"}>Home Goods & Decor</option>
+                    <option value={"Home Improvement"}>Home Improvement</option>
+                    <option value={"Kitchen"}>Kitchen</option>
+                    <option value={"Misc"}>Misc</option>
+                    <option value={"Music"}>Music</option>
+                    <option value={"Office"}>Office</option>
+                    <option value={"Outdoor & Garden"}>Outdoor & Garden</option>
+                    <option value={"Pets"}>Pets</option>
+                    <option value={"Seasonal"}>Seasonal</option>
+                    <option value={"Sporting Goods"}>Sporting Goods</option>
+                    <option value={"Toys & Games"}>Toys & Games</option>
                 </select>
                 <label className="newProductLabel h4 grayText"><h4>Condition</h4></label>
                 <select className="formInput grayText"

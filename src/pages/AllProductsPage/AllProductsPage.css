@@ -1,5 +1,23 @@
-.allProductsPage > ul {
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
+@media (min-width: 980px) {
+    .allProductsPage > ul {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+    }
+}
+
+@media (max-width: 979px) and (min-width: 748px) {
+    .allProductsPage > ul {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+    }
+}
+
+@media (max-width: 747px) and (min-width: 550px) {
+    .allProductsPage > ul {
+        margin: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
 }

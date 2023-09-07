@@ -10,7 +10,7 @@ const lineItemSchema = new Schema({
 });
 
 const orderSchema = new Schema({
-    buyer: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true

@@ -1,0 +1,59 @@
+.productDetailContainer {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+}
+
+.detailImage {
+    height: 35rem;
+    width: 28rem;
+}
+
+.col-1, .col-2 {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.col-2 {
+    margin-right: 2rem;
+}
+
+.fa-arrow-left {
+    margin-bottom: 1rem;
+}
+
+.fa-arrow-left:hover {
+    transform: scale(1.1) !important;
+}
+
+.productDetailContainer h2 {
+    margin: 4rem 0 0 0;
+    font-size: 2rem;
+}
+
+.lightGrayText {
+    color: #818181;
+}
+
+.priceDetail {
+    font-size: 1.5rem;
+}
+
+.row-3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editDeleteBtns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    margin-top: 5rem;
+}
+
+.descripDetail {
+    word-wrap: break-word;
+}
+
+.addToCartBtn {
+    margin-right: 7rem;
+}

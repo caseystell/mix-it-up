@@ -62,9 +62,9 @@ export default function App() {
             <NavBar user={user} setUser={setUser} activeCat={activeCat} setActiveCat={setActiveCat} categoriesRef={categoriesRef}/>
             <Routes>
               {/* Route components in here */}
-              <Route path="/products" element={<AllProductsPage handleAddToOrder={handleAddToOrder}/>} />
+              <Route path="/products" element={<AllProductsPage />} />
               <Route path="/products/new" element={<CreateProductPage addProduct={addProduct} setProducts={setProducts}/>} />
-              <Route path="/products/:productId" element={<ProductDetailPage />} />
+              <Route path="/products/:productId" element={<ProductDetailPage user={user} handleAddToOrder={handleAddToOrder} />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/orders/new" element={<NewOrderPage cart={cart} handleCheckout={handleCheckout} />}/>
               <Route path="/favorites" element={<FavoritesPage />} />

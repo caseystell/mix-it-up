@@ -16,15 +16,15 @@ const Category = require('./models/category');
     {name: 'Health & Beauty'},
     {name: 'Home Goods & Decor'},
     {name: 'Home Improvement'},
-    {name: 'Instruments'},
     {name: 'Kitchen'},
     {name: 'Misc'},
+    {name: 'Music'},
     {name: 'Office'},
     {name: 'Outdoor & Garden'},
-    {name: 'Pet'},
+    {name: 'Pets'},
     {name: 'Seasonal'},
     {name: 'Sporting Goods'},
-    {name: 'Toys'},
+    {name: 'Toys & Games'},
   ]);
 
   process.exit();

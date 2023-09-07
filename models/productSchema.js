@@ -18,7 +18,7 @@ const productSchema = new Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   purchased: { type: Boolean, default: false },
-  seller: { type: Schema.Types.ObjectId, ref: 'User' },
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
   timestamps: true
 });
