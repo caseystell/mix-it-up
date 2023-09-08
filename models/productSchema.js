@@ -3,7 +3,31 @@ const Schema = require('mongoose').Schema;
 const productSchema = new Schema({
   title: { type: String, required: true },
   img: { type: String },
-  category: {type: Schema.Types.ObjectId, ref: 'Category'},
+  category: {
+    type: String,
+    required: true,
+    enum: [
+      'Automotive',
+      'Baby',
+      'Books',
+      'Clothing, Shoes & Accessories',
+      'Collectibles',
+      'Electronics',
+      'Furniture',
+      'Health & Beauty',
+      'Home Goods & Decor',
+      'Home Improvement',
+      'Kitchen',
+      'Misc',
+      'Music',
+      'Office',
+      'Outdoor & Garden',
+      'Pets',
+      'Seasonal',
+      'Sporting Goods',
+      'Toys & Games'
+    ]
+  },
   condition: { 
     type: String,
     required: true,

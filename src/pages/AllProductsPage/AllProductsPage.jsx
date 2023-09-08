@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './AllProductsPage.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import * as productsAPI from '../../utilities/products-api';
 
-export default function AllProductsPage({}) {
-  const [products, setProducts] = useState([]);
-
+export default function AllProductsPage({ products, setProducts }) {
   const productCards = products.map((product) => 
     <ProductCard
       product={product}

@@ -1,11 +1,12 @@
 import './ProductDetailPage.css';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
+import * as ordersAPI from '../../utilities/orders-api';
 
-export default function ProductDetailPage({ handleAddToOrder, user }) {
+export default function ProductDetailPage({ user, cart, setCart }) {
     const [product, setProduct] = useState();
-    
+    const navigate = useNavigate();
     let {productId} = useParams();
 
     useEffect(function() {
@@ -15,6 +16,21 @@ export default function ProductDetailPage({ handleAddToOrder, user }) {
         }
         getProductById(productId);
     }, [productId]);
+
+    function handleDeleteProduct(evt) {
+        evt.preventDefault();
+        deleteProduct(productId);
+        navigate('/products');
+    }
+
+    function deleteProduct(productId) {
+        productsAPI.deleteProduct(productId);
+    }
+
+    async function handleAddToOrder(productId) {
+        const updatedCart = await ordersAPI.addProductToCart(productId);
+        setCart(updatedCart);
+    }
     
     return (
         <div className="productDetail">
@@ -33,12 +49,15 @@ export default function ProductDetailPage({ handleAddToOrder, user }) {
                         <button className="btn addToCartBtn" onClick={() => handleAddToOrder(productId)}>Add to Cart</button></p>
                         <p className="lightGrayText">Condition: <span className="grayText" >&nbsp;{product.condition}</span></p>
                         <p className="lightGrayText">Description: <span className="grayText descripDetail">&nbsp;{product.description}</span></p>
-                        { user ? (
-                            <p className="editDeleteBtns"><button className="btn" >Edit Product</button>
-                            <button className="btn" >Delete Product</button></p>
-                        ) : (
+                        {/* { user?._id.equals(product.user) ? ( */}
+                            <span className="editDeleteBtns"><Link to={`/products/${productId}/edit`}><button className="btn" >Edit Product</button></Link>
+                                <form className="deleteForm" onSubmit={handleDeleteProduct}>
+                                    <button className="btn" type="submit" >Delete Product</button>
+                                </form>
+                            </span>
+                        {/* ) : ( */}
                             <p></p>
-                        )}
+                        {/* )} */}
                         
                     </div>
                 </main>

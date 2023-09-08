@@ -1,0 +1,51 @@
+.addProductForm {
+    margin: 0.5rem 2rem;
+}
+
+.addProductForm > h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.addProductForm h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+}
+
+.addProductForm h4 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+}
+
+.formInput {
+    width: 98%;
+}
+
+.descriptionInput {
+    height: 8rem;
+    overflow-wrap: break-word;
+}
+
+.addProductForm button {
+    margin: 2rem 0;
+}
+
+.returnToTop {
+    color: #FFFFFF !important;
+    padding: 0 0.5rem !important;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonWrapper > Link {
+    justify-self: center;
+}
+
+.buttonWrapper > Link:visited {
+    color: #1E1E1E;
+}

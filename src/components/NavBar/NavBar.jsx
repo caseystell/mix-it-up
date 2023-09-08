@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import * as userService from '../../utilities/users-service';
-import CategoryList from '../CategoryList/CategoryList';
 
-export default function NavBar({ user, setUser, categoriesRef, activeCat, setActiveCat }) {
+export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     userService.logOut();
     setUser(null);
@@ -20,13 +19,6 @@ export default function NavBar({ user, setUser, categoriesRef, activeCat, setAct
         <span>Welcome, {user.name}!</span>
         <Link to="" onClick={handleLogOut} className="btn">Log Out</Link>
       </nav>
-      <div className="categoryList">
-        <CategoryList
-          categories={categoriesRef.current}
-          activeCat={activeCat}
-          setActiveCat={setActiveCat}
-        />
-      </div>
     </>
   );
 }
