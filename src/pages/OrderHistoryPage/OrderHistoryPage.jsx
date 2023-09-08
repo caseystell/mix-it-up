@@ -1,8 +1,27 @@
-export default function OrderHistoryPage() {
+import { useState, useEffect } from 'react';
+import OrderDetail from '../../components/OrderDetail/OrderDetail';
+import * as ordersAPI from '../../utilities/orders-api';
+
+export default function OrderHistoryPage({}) {
+  const [order, setOrder] = useState(null);
+  const [orderHistory, setOrderHistory] = useState({});
+
+  useEffect(function() {
+    async function getOrderHistory() {
+      const allOrders = await ordersAPI.getAll();
+      setOrderHistory(allOrders);
+    }
+    getOrderHistory();
+  }, []);
 
   return (
     <>
-      <h1>Order History</h1>
+      <h1>My Orders</h1>
+      { order ? (
+        <OrderDetail />
+      ) : (
+        <span>No Orders Yet!</span>
+      )}
     </>
   );
 }

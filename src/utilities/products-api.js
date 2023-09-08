@@ -10,13 +10,13 @@ export async function getById(id) {
 }
 
 export function createProduct(formData) {
-  return sendRequest(BASE_URL, 'PUT', formData);
+  return sendRequest(BASE_URL, 'POST', formData);
 }
 
 export function editProduct(productId, formData) {
-  return sendRequest(`${BASE_URL}/${productId}`, 'POST', formData);
+  return sendRequest(`${BASE_URL}/${productId}`, 'PUT', formData);
 }
 
 export function deleteProduct(productId) {
-  return sendRequest(`${BASE_URL}/${productId}/delete?_method=DELETE&productId=${productId}`, 'POST', {productId});
+  return sendRequest(`${BASE_URL}/${productId}`, 'DELETE', {productId});
 }

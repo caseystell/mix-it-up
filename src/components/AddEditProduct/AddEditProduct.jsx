@@ -17,13 +17,13 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
         onSubmit(formData);
     }
 
-    useEffect(function() {
-        async function getProducts() {
-            const products = await productsAPI.getAll();
-            setProducts(products);
-        }
-        getProducts();
-    }, []);
+    // useEffect(function() {
+    //     async function getProducts() {
+    //         const products = await productsAPI.getAll();
+    //         setProducts(products);
+    //     }
+    //     getProducts();
+    // }, []);
 
     return (
         <div className="addProductForm">
@@ -118,8 +118,7 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
                     )
                     }
                     </button>
-                    <Link to="/products">Cancel</Link>
-                    <button className="returnToTop btn fa fa-arrow-up" onClick={ useEffect(() => { window.scrollTo(0,0) }, []) }></button>
+                    <Link to="/products"><button className="btn">Cancel</button></Link>
                 </div>
         </form>
       </div>

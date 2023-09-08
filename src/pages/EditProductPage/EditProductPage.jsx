@@ -29,7 +29,7 @@ export default function EditProductPage({ products, setProducts }) {
 
     return (
         <>
-            { product && (<AddEditProduct mode={"edit"} initialState={product} onSubmit={handleEditProduct}/>) }
+            { product && (<AddEditProduct mode={"edit"} initialState={product} onSubmit={handleEditProduct} />) }
         </>
     );
 }

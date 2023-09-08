@@ -6,6 +6,9 @@ module.exports = {
   addToCart,
   checkout,
   delete: deleteFromCart,
+  index,
+  show,
+  add: addOrderToOrderHistory
 };
 
 // A cart is the unpaid order for a user
@@ -36,4 +39,19 @@ async function deleteFromCart(req, res) {
     res.json(cart);
 }
 
-// Buyer can add a product to their favorites list
+// All orders
+async function index(req, res) {
+  const orders = await Order.find({});
+  res.json(orders);
+}
+
+// By order id
+async function show(req, res) {
+  const order = await Order.findById(req.params.id);
+  res.json(order);
+}
+
+// Add order to orderHistory
+async function addOrderToOrderHistory() {
+  
+}

@@ -70,4 +70,12 @@ orderSchema.methods.setProductQty = function(productId, newQty) {
     return cart.save();
 };
 
+orderSchema.statics.getOrder = function(userId) {
+    return this.findOneAndUpdate(
+        { user: userId, isPaid: true },
+        { user: userId },
+        { upsert: true, new: true }
+    );
+};
+
 module.exports = mongoose.model('Order', orderSchema)

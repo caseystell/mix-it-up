@@ -4,8 +4,14 @@ const ordersCtrl = require('../../controllers/api/orders');
 
 // All routes start with '/api/orders'
 
+// GET /api/orders
+router.get('/', ordersCtrl.index);
+// GET /api/orders/:id
+router.get('/:id', ordersCtrl.show);
 // GET /api/orders/cart
 router.get('/cart', ordersCtrl.cart);
+// POST /api/orders/ to order history
+router.post('/', ordersCtrl.add);
 // POST /api/orders/cart/products/:id
 router.post('/cart/products/:id', ordersCtrl.addToCart);
 // POST /api/orders/cart/checkout

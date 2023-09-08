@@ -20,3 +20,18 @@ export function setProductQtyInCart(productId, newQty) {
 export function checkout() {
   return sendRequest(`${BASE_URL}/cart/checkout`, 'POST');
 }
+
+// Get all orders
+export async function getAll() {
+  return sendRequest(BASE_URL);
+}
+
+// Get order by orderId
+export async function getById(orderId) {
+  return sendRequest(`${BASE_URL}/${orderId}`);
+}
+
+// Adds order to order history
+export function addOrderToOrderHistory(orderData) {
+  return sendRequest(`${BASE_URL}`, 'POST', orderData)
+}

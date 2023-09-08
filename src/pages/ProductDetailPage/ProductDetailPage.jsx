@@ -43,7 +43,7 @@ export default function ProductDetailPage({ products, setProducts, user, cart, s
                         <Link to="/products" className="fa fas fa-arrow-left"><span className="pinkText"> Back to all listings</span></Link>
                         <p>Listed {new Date(product.createdAt).toLocaleDateString()}</p>
                         <img className="detailImage" src={product.img} alt="product"/>
-                        <p>Seller: {/* {product.user.name} */}</p>
+                        <p>Seller ID: {product.user.slice(-6).toUpperCase()}</p>
                     </div>
                     <div className="col-2">
                         <p></p>
@@ -52,15 +52,15 @@ export default function ProductDetailPage({ products, setProducts, user, cart, s
                         <button className="btn addToCartBtn" onClick={() => handleAddToOrder(productId)}>Add to Cart</button></p>
                         <p className="lightGrayText">Condition: <span className="grayText" >&nbsp;{product.condition}</span></p>
                         <p className="lightGrayText">Description: <span className="grayText descripDetail">&nbsp;{product.description}</span></p>
-                        {/* { user?._id.equals(product.user) ? ( */}
+                        { user?._id === product.user ? (
                             <span className="editDeleteBtns"><Link to={`/products/${productId}/edit`}><button className="btn" >Edit Product</button></Link>
                                 <form className="deleteForm" onSubmit={handleDeleteProduct}>
                                     <button className="btn" type="submit" >Delete Product</button>
                                 </form>
                             </span>
-                        {/* ) : ( */}
+                        ) : ( 
                             <p></p>
-                        {/* )} */}
+                        )}
                         
                     </div>
                 </main>

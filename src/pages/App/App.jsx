@@ -11,32 +11,11 @@ import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductDetailPage from '../ProductDetailPage/ProductDetailPage';
 import EditProductPage from '../EditProductPage/EditProductPage';
-import * as productsAPI from '../../utilities/products-api';
-import * as ordersAPI from '../../utilities/orders-api';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
-
-  // The empty dependency array causes the effect
-  // to run ONLY after the FIRST render
-  // useEffect(function() {
-  //   async function getProducts() {
-  //     const products = await productsAPI.getAll();
-  //     categoriesRef.current = [...new Set(products.map(product => product.category.name))];
-  //     setProducts(products);
-  //   }
-  //   getProducts();
-  //   // Cart
-  //   async function getCart() {
-  //     const cart = await ordersAPI.getCart();
-  //     setCart(cart);
-  //   }
-  //   getCart();
-  // }, []);
-
-  /*--- Event Handlers --- */
 
   return (
     <main className="App">
