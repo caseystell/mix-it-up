@@ -1,12 +1,25 @@
 import './NewOrderPage.css';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as ordersAPI from '../../utilities/orders-api';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 
 export default function NewOrderPage({}) {
   const [cart, setCart] = useState([]);
   let navigate = useNavigate();
+
+  useEffect(function() {
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
+  }, []);
+
+  async function handleRemoveQty(productId, newQty) {
+    const updatedCart = await ordersAPI.setProductQtyInCart(productId, newQty);
+    setCart(updatedCart)
+  }
 
   async function handleCheckout() {
     await ordersAPI.checkout();
@@ -15,10 +28,7 @@ export default function NewOrderPage({}) {
 
   return (
     <main className="NewOrderPage">
-      <aside>
-        <Link to="/orders" className="btn">Order History</Link>
-      </aside>
-      <OrderDetail order={cart} handleCheckout={handleCheckout} />
+      <OrderDetail order={cart} handleRemoveQty={handleRemoveQty} handleCheckout={handleCheckout} />
     </main>
   );
 }

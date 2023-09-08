@@ -23,7 +23,7 @@ export default function EditProductPage({ products, setProducts }) {
     }
 
     function handleEditProduct(formData) {
-        editProduct(formData);
+        editProduct(productId, formData);
         navigate(`/products/${productId}`);
     }
 

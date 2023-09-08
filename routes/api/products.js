@@ -11,7 +11,7 @@ router.get('/:id', productsCtrl.show);
 // POST /api/products
 router.post('/', productsCtrl.create);
 // EDIT /api/products/:id
-router.post('/:id/edit', productsCtrl.edit);
+router.put('/:id/edit', productsCtrl.edit);
 // DELETE /api/products/:id
 router.delete('/:id', productsCtrl.delete);
 

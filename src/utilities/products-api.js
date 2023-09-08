@@ -10,11 +10,11 @@ export async function getById(id) {
 }
 
 export function createProduct(formData) {
-  return sendRequest(BASE_URL, 'POST', formData);
+  return sendRequest(BASE_URL, 'PUT', formData);
 }
 
 export function editProduct(productId, formData) {
-  return sendRequest(`${BASE_URL}/${productId}`, 'PUT', formData);
+  return sendRequest(`${BASE_URL}/${productId}`, 'POST', formData);
 }
 
 export function deleteProduct(productId) {

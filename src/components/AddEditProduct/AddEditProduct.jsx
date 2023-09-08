@@ -12,7 +12,7 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
         setFormData(newFormData);
     }
 
-    function wrapperProduct(evt) {
+    function wrapProduct(evt) {
         evt.preventDefault();
         onSubmit(formData);
     }
@@ -33,7 +33,7 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
                 <h1>Edit a product!</h1>
             )
             }
-            <form className="NewProductForm" onSubmit={wrapperProduct}>
+            <form className="NewProductForm" onSubmit={wrapProduct}>
                 <label className="newProductLabel h2 grayText"><h2>Photo URL</h2></label>
                 <input className="formInput"
                     name="img"
@@ -114,7 +114,7 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
                     { mode === "create" ? (
                         <span>List my item!</span>
                     ) : (
-                        <span>Edit my item!</span>
+                        <span>Save my edits!</span>
                     )
                     }
                     </button>

@@ -35,7 +35,7 @@ async function create(req, res) {
 
 // User (as a seller) can edit their own product
 async function editProduct(req, res) {
-  const product = await Product.findByIdAndUpdate({ _id: req.params.id, user: req.user._id });
+  const product = await Product.findById({ _id: req.params.id, user: req.user._id });
   res.json(product);
 }
 

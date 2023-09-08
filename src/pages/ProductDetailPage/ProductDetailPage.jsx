@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function ProductDetailPage({ user, cart, setCart }) {
+export default function ProductDetailPage({ products, setProducts, user, cart, setCart }) {
     const [product, setProduct] = useState();
     const navigate = useNavigate();
     let {productId} = useParams();
@@ -22,9 +22,12 @@ export default function ProductDetailPage({ user, cart, setCart }) {
         deleteProduct(productId);
         navigate('/products');
     }
-
-    function deleteProduct(productId) {
-        productsAPI.deleteProduct(productId);
+    
+    async function deleteProduct(productId) {
+        await productsAPI.deleteProduct(productId);
+        setProducts(allProducts => {
+            return allProducts.filter(product => product._id !== productId);
+        })
     }
 
     async function handleAddToOrder(productId) {
