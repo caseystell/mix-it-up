@@ -5,15 +5,19 @@ export async function getAll() {
   return sendRequest(BASE_URL);
 }
 
-export async function getById(id) {
-  return sendRequest(`${BASE_URL}/${id}`);
+export async function getById(productId) {
+  return sendRequest(`${BASE_URL}/${productId}`);
 }
 
 export function createProduct(formData) {
   return sendRequest(BASE_URL, 'POST', formData);
 }
 
-export function editProduct(productId, formData) {
+export function editProduct(productId) {
+  return sendRequest(`${BASE_URL}/${productId}/edit`);
+}
+
+export function updateProduct(productId, formData) {
   return sendRequest(`${BASE_URL}/${productId}`, 'PUT', formData);
 }
 

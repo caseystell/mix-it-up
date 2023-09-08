@@ -29,7 +29,7 @@ export default function App() {
               <Route path="/products/:productId" element={<ProductDetailPage user={user} cart={cart} setCart={setCart} products={products} setProducts={setProducts} />} />
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/cart" element={<NewOrderPage />}/>
+              <Route path="/orders/cart" element={<NewOrderPage />}/>
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>

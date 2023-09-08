@@ -17,13 +17,13 @@ export default function AddEditProduct({ initialState, onSubmit, mode }) {
         onSubmit(formData);
     }
 
-    // useEffect(function() {
-    //     async function getProducts() {
-    //         const products = await productsAPI.getAll();
-    //         setProducts(products);
-    //     }
-    //     getProducts();
-    // }, []);
+    useEffect(function() {
+        async function getProducts() {
+            const products = await productsAPI.getAll();
+            setProducts(products);
+        }
+        getProducts();
+    }, []);
 
     return (
         <div className="addProductForm">

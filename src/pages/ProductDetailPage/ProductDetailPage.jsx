@@ -49,7 +49,7 @@ export default function ProductDetailPage({ products, setProducts, user, cart, s
                         <p></p>
                         <h2>{product.title}</h2>
                         <p className="row-3"><span className="priceDetail">${product.price.toFixed(2)}</span>
-                        <button className="btn addToCartBtn" onClick={() => handleAddToOrder(productId)}>Add to Cart</button></p>
+                        <Link to="/orders/cart"><button className="btn addToCartBtn" onClick={() => handleAddToOrder(productId)}>Add to Cart</button></Link></p>
                         <p className="lightGrayText">Condition: <span className="grayText" >&nbsp;{product.condition}</span></p>
                         <p className="lightGrayText">Description: <span className="grayText descripDetail">&nbsp;{product.description}</span></p>
                         { user?._id === product.user ? (

@@ -18,7 +18,7 @@ export default function OrderHistoryPage({}) {
     <>
       <h1>My Orders</h1>
       { order ? (
-        <OrderDetail />
+        <OrderDetail orderHistory={orderHistory} setOrderHistory={setOrderHistory}/>
       ) : (
         <span>No Orders Yet!</span>
       )}

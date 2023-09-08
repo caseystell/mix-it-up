@@ -5,10 +5,11 @@ module.exports = {
   cart,
   addToCart,
   checkout,
-  delete: deleteFromCart,
+  // delete: deleteFromCart,
   index,
   show,
-  add: addOrderToOrderHistory
+  add: addOrderToOrderHistory,
+  setProductQtyInCart
 };
 
 // A cart is the unpaid order for a user
@@ -17,10 +18,10 @@ async function cart(req, res) {
   res.json(cart);
 }
 
-// Add an item to the cart
+// Add a product to the cart
 async function addToCart(req, res) {
  const cart = await Order.getCart(req.user._id);
- await cart.addItemToCart(req.params.id);
+ await cart.addProductToCart(req.params.id);
  res.json(cart);
 }
 
@@ -32,12 +33,19 @@ async function checkout(req, res) {
   res.json(cart);
 }
 
-// Buyer can delete product from cart
-async function deleteFromCart(req, res) {
-    const cart = await Order.getCart(req.user._id);
-    await cart.findByIdAndDelete(req.params.id);
-    res.json(cart);
+// Updates a product's qty in the cart
+async function setProductQtyInCart(req, res) {
+  const cart = await Order.getCart(req.user._id);
+  await cart.setProductQty(req.body.itemId, req.body.newQty); 
+  res.json(cart);
 }
+
+// // Buyer can delete product from cart
+// async function deleteFromCart(req, res) {
+//     const cart = await Order.getCart(req.user._id);
+//     await cart.deleteOne(req.params.id);
+//     res.json(cart);
+// }
 
 // All orders
 async function index(req, res) {

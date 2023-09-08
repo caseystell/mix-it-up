@@ -17,13 +17,19 @@ export default function EditProductPage({ products, setProducts }) {
         getProductById(productId);
     }, [productId]);
 
-    async function editProduct(productId, product) {
-        const editedProduct = await productsAPI.editProduct(productId, product);
+    async function editProduct(productId) {
+        const editedProduct = await productsAPI.editProduct(productId);
         setProduct(editedProduct);
     }
 
+    async function updateProduct(productId, product) {
+        const updatedProduct = await productsAPI.updateProduct(productId, product);
+        setProduct(updatedProduct);
+    }
+
     function handleEditProduct(formData) {
-        editProduct(productId, formData);
+        editProduct(productId);
+        updateProduct(productId, formData);
         navigate(`/products/${productId}`);
     }
 

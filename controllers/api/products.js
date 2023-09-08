@@ -5,6 +5,7 @@ module.exports = {
   show,
   create,
   edit: editProduct,
+  update: updateProduct,
   delete: deleteProduct,
   categoryIndex,
   categoryShow
@@ -39,6 +40,20 @@ async function create(req, res) {
 async function editProduct(req, res) {
   const product = await Product.findById({ _id: req.params.id, user: req.user._id });
   res.json(product);
+}
+
+async function updateProduct(req, res) {
+  req.body.user = req.user._id;
+  req.body.userName = req.user.name;
+  for (let key in req.body) {
+      if (req.body[key] === '') delete req.body[key];
+  }
+  try {
+      const product = await Product.updateOne({ _id: req.params.id, user: req.user._id });
+      res.json(product);
+  } catch (err) {
+      res.status(500).json(err)
+  }
 }
 
 // User (as a seller) can delete their own product
