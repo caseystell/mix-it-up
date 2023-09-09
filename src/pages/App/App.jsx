@@ -7,7 +7,6 @@ import AllProductsPage from '../AllProductsPage/AllProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import CreateProductPage from '../CreateProductPage/CreateProductPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductDetailPage from '../ProductDetailPage/ProductDetailPage';
 import EditProductPage from '../EditProductPage/EditProductPage';
@@ -29,8 +28,7 @@ export default function App() {
               <Route path="/products/:productId" element={<ProductDetailPage user={user} cart={cart} setCart={setCart} products={products} setProducts={setProducts} />} />
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/orders/cart" element={<NewOrderPage />}/>
-              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} products={products} setProducts={setProducts}/>}/>
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>
           </>

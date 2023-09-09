@@ -9,8 +9,9 @@ export default function LineItem({ lineItem, isPaid, handleRemoveQty }) {
           <button
             className="btn"
             onClick={() => handleRemoveQty(lineItem.product._id, lineItem.qty - 1)}
-          >Remove</button>
+          >x</button>
         }
+        <span>{lineItem.qty}</span>
       </div>
       <div className="price">${lineItem.product.price.toFixed(2)}</div>
     </div>

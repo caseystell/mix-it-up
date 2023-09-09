@@ -36,12 +36,11 @@ async function create(req, res) {
   }
 }
 
-// User (as a seller) can edit their own product
 async function editProduct(req, res) {
   const product = await Product.findById({ _id: req.params.id, user: req.user._id });
   res.json(product);
 }
-
+// User (as a seller) can edit their own product
 async function updateProduct(req, res) {
   req.body.user = req.user._id;
   req.body.userName = req.user.name;
@@ -49,7 +48,7 @@ async function updateProduct(req, res) {
       if (req.body[key] === '') delete req.body[key];
   }
   try {
-      const product = await Product.updateOne({ _id: req.params.id, user: req.user._id });
+      const product = await Product.findByIdAndUpdate(req.params.id, req.body);
       res.json(product);
   } catch (err) {
       res.status(500).json(err)

@@ -1,4 +1,5 @@
 import './OrderDetail.css';
+import { Link } from 'react-router-dom';
 import LineItem from '../LineItem/LineItem';
 
 export default function OrderDetail({ order, handleRemoveQty, handleCheckout, orderHistory, setOrderHistory }) {
@@ -45,7 +46,7 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
             </section>
           </>
           :
-          <div className="empty-cart">Your cart is empty!</div>
+          <div className="empty-cart">Your cart is empty! <span>Looking for a <Link to="/orders">previous order</Link>?</span></div>
         }
       </div>
     </div>

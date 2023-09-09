@@ -13,7 +13,6 @@ export default function NavBar({ user, setUser }) {
       <nav>
         <Link to="/products"><h1>MixItUp!</h1></Link>
         <Link to="/products/new" className="btn">List!</Link>
-        <Link to="/favorites"><span className="fa fa-heart-o"></span></Link>
         <Link to="/orders/cart"><span className="fa fa-shopping-cart"></span></Link>
         <Link to="/orders"><span className="fa fas fa-user-circle"></span></Link>
         <span>Welcome, {user.name}!</span>
