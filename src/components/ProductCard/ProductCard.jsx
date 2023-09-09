@@ -8,7 +8,8 @@ export default function ProductCard({ product }) {
             <div className="productCard"
                 style={{
                     "backgroundImage": `url(${product.img})`,
-                    "backgroundRepeat": "no-repeat center",
+                    "backgroundRepeat": "no-repeat",
+                    "backgroundSize": "contain",
                 }}
             >
                 <div className="productCardText">

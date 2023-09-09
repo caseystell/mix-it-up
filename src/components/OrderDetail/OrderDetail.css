@@ -1,0 +1,42 @@
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table thead th {
+    padding: 0.5rem;
+    border-bottom: 1px solid #1E1E1E;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: start;
+}
+
+tfoot tr td {
+    border-top: 1px solid #1E1E1E;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+.empty-cart {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.empty-cart > div {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: #818181;
+}
+
+.no-hover {
+    font-size: 7rem !important;
+    color: #F0F0F0 !important;
+}
+
+.no-hover:hover {
+    transform: none !important;
+}

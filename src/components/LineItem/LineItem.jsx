@@ -2,18 +2,16 @@ import './LineItem.css';
 
 export default function LineItem({ lineItem, isPaid, handleRemoveQty }) {
   return (
-    <div className="LineItem">
-      <span>{lineItem.product.title}</span>
-      <div className="qty" style={{ justifyContent: isPaid && 'center' }}>
+    <tr className="LineItem">
+      <td><img className="cart-img" src={lineItem.product.img} /></td>
+      <td>{lineItem.product.title}</td>
+      <td className="price">${lineItem.product.price.toFixed(2)}</td>
         {!isPaid &&
-          <button
+          <td><button
             className="btn"
             onClick={() => handleRemoveQty(lineItem.product._id, lineItem.qty - 1)}
-          >x</button>
+          >x</button></td>
         }
-        <span>{lineItem.qty}</span>
-      </div>
-      <div className="price">${lineItem.product.price.toFixed(2)}</div>
-    </div>
+    </tr>
   );
 }

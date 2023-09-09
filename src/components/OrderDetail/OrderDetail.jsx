@@ -27,28 +27,44 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
           <h1>My Cart</h1>
         }
       </div>
-      <div className="line-item-container">
-        {lineItems?.length ?
-          <>
+      {!lineItems?.length ?
+        <section className="empty-cart">
+          <div>Your cart is empty!</div>
+          <div className="fa fa-shopping-cart no-hover"></div>
+          <div>Looking for a <Link to="/orders">previous order</Link>?</div>
+        </section>
+        :
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
             {lineItems}
-            <section className="total">
+          </tbody>
+          <tfoot className="total">
+            <tr>
+              <td></td>
+              <td>{order.totalQty} Items</td>
+              <td>${order.orderTotal?.toFixed(2)}</td>
               {order.isPaid ?
-                <span>Total&nbsp;&nbsp;</span>
+                <td>Total&nbsp;&nbsp;</td>
                 :
-                <button
+                <td><button
                   className="btn"
                   onClick={handleCheckout}
                   disabled={!lineItems.length}
-                >Checkout</button>
+                >Checkout</button></td>
               }
-              <span>{order.totalQty}</span>
-              <span>${order.orderTotal?.toFixed(2)}</span>
-            </section>
-          </>
-          :
-          <div className="empty-cart">Your cart is empty! <span>Looking for a <Link to="/orders">previous order</Link>?</span></div>
+              
+            </tr>
+          </tfoot>
+        </table>
         }
-      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './OrderHistoryPage.css';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
 
@@ -20,7 +21,7 @@ export default function OrderHistoryPage({}) {
       { order ? (
         <OrderDetail orderHistory={orderHistory} setOrderHistory={setOrderHistory}/>
       ) : (
-        <span>No Orders Yet!</span>
+        <span className="no-orders" >No Orders Yet!</span>
       )}
     </>
   );
