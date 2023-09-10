@@ -40,3 +40,10 @@ h1 {
 .no-hover:hover {
     transform: none !important;
 }
+
+.gray {
+    margin-top: 2rem;
+    color: #818181;
+    text-align: center;
+    font-size: 0.9rem;
+}

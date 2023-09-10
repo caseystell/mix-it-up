@@ -14,12 +14,8 @@ export default function LoginForm({ setUser }) {
   }
 
   async function handleSubmit(evt) {
-    // Prevent form from being submitted to the server
     evt.preventDefault();
     try {
-      // The promise returned by the signUp service method 
-      // will resolve to the user object included in the
-      // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
       setUser(user);
     } catch {
@@ -36,7 +32,8 @@ export default function LoginForm({ setUser }) {
           <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
           <label><h4>Password</h4></label>
           <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit" className="btn">LOG IN</button>
+          <br/>
+          <button type="submit" className="btn auth">Log in</button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>

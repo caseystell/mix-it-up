@@ -5,12 +5,17 @@
 
 .detailImage {
     height: 25rem;
-    width: 35rem;
+    width: 25rem;
+    object-fit: cover;
 }
 
 .col-1, .col-2 {
     margin: 0.5rem;
     padding: 0.5rem;
+}
+
+.col-1 {
+    margin-left: 2rem;
 }
 
 .col-2 {

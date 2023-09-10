@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './OrderHistoryPage.css';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -21,7 +22,11 @@ export default function OrderHistoryPage({}) {
       { order ? (
         <OrderDetail orderHistory={orderHistory} setOrderHistory={setOrderHistory}/>
       ) : (
-        <span className="no-orders" >No Orders Yet!</span>
+        <section className="no-orders" >
+          <div>No orders yet!</div>
+          <div className="fa fa-list-ul no-hover"></div>
+          <div><Link to="/products">Add items</Link> to your cart!</div>
+        </section>
       )}
     </>
   );

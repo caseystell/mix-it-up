@@ -34,36 +34,39 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
           <div>Looking for a <Link to="/orders">previous order</Link>?</div>
         </section>
         :
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {lineItems}
-          </tbody>
-          <tfoot className="total">
-            <tr>
-              <td></td>
-              <td>{order.totalQty} Items</td>
-              <td>${order.orderTotal?.toFixed(2)}</td>
-              {order.isPaid ?
-                <td>Total&nbsp;&nbsp;</td>
-                :
-                <td><button
-                  className="btn"
-                  onClick={handleCheckout}
-                  disabled={!lineItems.length}
-                >Checkout</button></td>
-              }
-              
-            </tr>
-          </tfoot>
-        </table>
+        <>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {lineItems}
+            </tbody>
+            <tfoot className="total">
+              <tr>
+                <td></td>
+                <td>{order.totalQty} Items</td>
+                <td>${order.orderTotal?.toFixed(2)}</td>
+                {order.isPaid ?
+                  <td>Total&nbsp;&nbsp;</td>
+                  :
+                  <td><button
+                    className="btn"
+                    onClick={handleCheckout}
+                    disabled={!lineItems.length}
+                  >Checkout</button></td>
+                }
+                
+              </tr>
+            </tfoot>
+          </table>
+          <div className="gray"><Link to="/products">Back</Link> to all products</div>
+        </>
         }
     </div>
   );

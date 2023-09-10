@@ -1,5 +1,10 @@
 .no-orders {
-    font-size: 1.5rem;
-    color: #818181;
     text-align: center;
+    margin-top: 3rem;
+}
+
+.no-orders > div {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: #818181;
 }

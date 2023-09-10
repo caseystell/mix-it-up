@@ -7,7 +7,7 @@
 <img src="./public/images/MixItUp Header.png" alt="MixItUp!" height="100" width="300"/>
 
 <h2 align="center">
-    <a href="https://vibrant-village-6e72f0c47e7c.herokuapp.com/" target="_blank" rel="noopener noreferrer" >Mix It Up!</a>
+    <a href="https://mixitup-project-4-0e47b2d8d550.herokuapp.com/" target="_blank" rel="noopener noreferrer" >Mix It Up!</a>
 </h2>
 
   <p align="center">
@@ -52,7 +52,7 @@
 ## Getting Started
 
 <h4>How to Use MixItUp!</h4>
-<h5>Click <a href="https://vibrant-village-6e72f0c47e7c.herokuapp.com/" target="_blank" rel="noopener noreferrer" >here</a> to visit the site!</h5>
+<h5>Click <a href="https://mixitup-project-4-0e47b2d8d550.herokuapp.com/" target="_blank" rel="noopener noreferrer" >here</a> to visit the site!</h5>
 <ol>
     <li>Create an account to browse and list products.</li>
     <li>If you are looking to sell, create listings with your item's photo, title, condition, category, description, and price. Items can be edited by the seller and deleted when they are no longer available for sale.</li>
