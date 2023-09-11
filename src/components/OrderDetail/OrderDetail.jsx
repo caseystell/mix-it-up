@@ -1,8 +1,7 @@
 import './OrderDetail.css';
-import { Link } from 'react-router-dom';
 import LineItem from '../LineItem/LineItem';
 
-export default function OrderDetail({ order, handleRemoveQty, handleCheckout, orderHistory, setOrderHistory }) {
+export default function OrderDetail({ order, orderHistory, setOrderHistory }) {
 
   if (!order) return null;
 
@@ -10,38 +9,24 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
     <LineItem
       lineItem={product}
       isPaid={order.isPaid}
-      handleRemoveQty={handleRemoveQty}
       key={product._id}
     />
   );
 
   return (
-    <div className="OrderDetail">
-      <div className="order-heading">
-        {order.isPaid ?
-          <>
-            <h1>Order <span className="grayText">{order.orderId}</span></h1>
-            <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
-          </>
-          :
-          <h1>My Cart</h1>
-        }
-      </div>
-      {!lineItems?.length ?
-        <section className="empty-cart">
-          <div>Your cart is empty!</div>
-          <div className="fa fa-shopping-cart no-hover"></div>
-          <div>Looking for a <Link to="/orders">previous order</Link>?</div>
-        </section>
-        :
-        <>
+    <>
+      {order.isPaid && 
+        <div className="OrderDetail">
+          <div className="order-heading">
+            <h2>Order <span className="grayText">{order.orderId}</span></h2>
+            <span className="date">{new Date(order.updatedAt).toLocaleDateString()}</span>
+          </div>
           <table>
             <thead>
               <tr>
                 <th></th>
                 <th>Product</th>
                 <th>Price</th>
-                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
@@ -49,25 +34,14 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
             </tbody>
             <tfoot className="total">
               <tr>
-                <td></td>
+                <td>Total</td>
                 <td>{order.totalQty} Items</td>
                 <td>${order.orderTotal?.toFixed(2)}</td>
-                {order.isPaid ?
-                  <td>Total&nbsp;&nbsp;</td>
-                  :
-                  <td><button
-                    className="btn"
-                    onClick={handleCheckout}
-                    disabled={!lineItems.length}
-                  >Checkout</button></td>
-                }
-                
               </tr>
             </tfoot>
           </table>
-          <div className="gray"><Link to="/products">Back</Link> to all products</div>
-        </>
-        }
-    </div>
+        </div>
+      }
+    </>
   );
 } 

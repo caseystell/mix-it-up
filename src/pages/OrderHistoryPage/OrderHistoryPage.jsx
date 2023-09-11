@@ -4,9 +4,11 @@ import './OrderHistoryPage.css';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function OrderHistoryPage({}) {
-  const [order, setOrder] = useState(null);
-  const [orderHistory, setOrderHistory] = useState({});
+export default function OrderHistoryPage({ orderHistory, setOrderHistory }) {
+
+  const orders = orderHistory?.map(order => 
+    <OrderDetail order={order}/>
+  )
 
   useEffect(function() {
     async function getOrderHistory() {
@@ -19,8 +21,8 @@ export default function OrderHistoryPage({}) {
   return (
     <>
       <h1>My Orders</h1>
-      { order ? (
-        <OrderDetail orderHistory={orderHistory} setOrderHistory={setOrderHistory}/>
+      { orderHistory?.length > 0 ? (
+        <div>{orders}</div>
       ) : (
         <section className="no-orders" >
           <div>No orders yet!</div>

@@ -54,8 +54,8 @@ async function show(req, res) {
 
 // When a cart changes to 'isPaid', copies cart to order history
 async function createOrderHistory(req, res) {
-  const order = await Order.getOrder(req.user._id, req.params.id);
-  await order.addOrderToOrderHistory(req.body.orderId);
+  const order = await Order.findById(req.params.id);
+  await order?.addOrderToOrderHistory(req.body.orderId);
   res.json(order);
 }
 

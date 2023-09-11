@@ -80,13 +80,14 @@ orderSchema.statics.getOrder = function(userId, orderId) {
     );
 };
 
-orderSchema.methods.addOrderToOrderHistory = async function (orderId) {
+orderSchema.methods.addOrderToOrderHistory = async function(orderId) {
     const orders = this;
-    const order = orders.findById(order => order._id.equals(orderId));
+    const order = orders.find(order => order._id.toString() === orderId);
+    console.log(order)
     if (order) {
         return;
     } else {
-        orders.push({ order });
+        orders?.push({ order });
     }
     return orders.save();
 };

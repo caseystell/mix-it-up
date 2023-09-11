@@ -1,11 +1,10 @@
 import './NewOrderPage.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as ordersAPI from '../../utilities/orders-api';
-import OrderDetail from '../../components/OrderDetail/OrderDetail';
+import CartDetail from '../../components/CartDetail/CartDetail';
 
-export default function NewOrderPage({ cart, setCart, products, setProducts }) {
-  const [orderHistory, setOrderHistory] = useState(null);
+export default function NewOrderPage({ cart, setCart, products, setProducts, orderHistory, setOrderHistory }) {
   let navigate = useNavigate();
 
   useEffect(function() {
@@ -40,7 +39,7 @@ export default function NewOrderPage({ cart, setCart, products, setProducts }) {
 
   return (
     <main className="NewOrderPage">
-      <OrderDetail order={cart} handleRemoveQty={handleRemoveQty} handleCheckout={handleCheckout} />
+      <CartDetail order={cart} handleRemoveQty={handleRemoveQty} handleCheckout={handleCheckout} />
     </main>
   );
 }

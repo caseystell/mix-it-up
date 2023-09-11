@@ -32,7 +32,7 @@
 <img src="./public/images/MixItUp Homepage.png" alt="MixItUp! Homepage" height="400" width="650" display="inline-block"/>
 <img src="./public/images/ProductDetailImage.png" alt="MixItUp! Product Detail Page" height="400" width="650" display="inline-block"/>
 <img src="./public/images/MyCartPage.png" alt="MixItUp! Cart Page" height="400" width="500" display="inline-block"/>
-<img src="./public/images/" alt="MixItUp! Order History Page" height="400" width="550" display="inline-block"/>
+<img src="./public/images/OrderDetail.png" alt="MixItUp! Order History Page" height="400" width="550" display="inline-block"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

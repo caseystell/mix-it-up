@@ -15,6 +15,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [orderHistory, setOrderHistory] = useState([]);
 
   return (
     <main className="App">
@@ -27,8 +28,8 @@ export default function App() {
               <Route path="/products/new" element={<CreateProductPage products={products} setProducts={setProducts}/>} />
               <Route path="/products/:productId" element={<ProductDetailPage user={user} cart={cart} setCart={setCart} products={products} setProducts={setProducts} />} />
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} products={products} setProducts={setProducts}/>}/>
+              <Route path="/orders" element={<OrderHistoryPage orderHistory={orderHistory} setOrderHistory={setOrderHistory} />} />
+              <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} products={products} setProducts={setProducts} orderHistory={orderHistory} setOrderHistory={setOrderHistory}/>}/>
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>
           </>
