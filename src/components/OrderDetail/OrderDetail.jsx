@@ -15,14 +15,18 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
     />
   );
 
+
+
+
+
   return (
     <div className="OrderDetail">
       <div className="order-heading">
         {order.isPaid ?
-          <>
+          <Link to={`/orders/${order._id}`}>
             <h1>Order <span className="grayText">{order.orderId}</span></h1>
             <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
-          </>
+          </Link>
           :
           <h1>My Cart</h1>
         }

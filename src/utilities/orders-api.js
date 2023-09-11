@@ -37,7 +37,7 @@ export function addOrderToOrderHistory(orderData) {
 }
 
 // Retrieve a paid order for the logged in user
-export function getOrder(orderId={orderId}) {
+export function getOrder(userId, orderId) {
   return sendRequest(`${BASE_URL}/${orderId}`);
 }
 
