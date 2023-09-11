@@ -26,18 +26,16 @@ export default function NewOrderPage({ cart, setCart, products, setProducts }) {
     setCart(updatedCart)
   }
 
-  async function handleCheckout(cart, productId) {
+  async function handleCheckout(cart) {
     const order = await ordersAPI.checkout(cart);
     setOrderHistory(order);
-    handleAddToOrderHistory(order, productId);
+    handleAddToOrderHistory(order);
     navigate('/orders');
   }
 
-  async function handleAddToOrderHistory(cart, productId) {
+  async function handleAddToOrderHistory(cart) {
     const order = await ordersAPI.addOrderToOrderHistory(cart);
-    const products = await ordersAPI.removeSoldProduct(productId);
     setOrderHistory(order);
-    setProducts(products);
   }
 
   return (
