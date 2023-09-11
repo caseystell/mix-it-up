@@ -74,4 +74,4 @@ export default function OrderDetail({ order, handleRemoveQty, handleCheckout, or
         }
     </div>
   );
-}
+} 
