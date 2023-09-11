@@ -80,28 +80,26 @@ orderSchema.statics.getOrder = function(userId, orderId) {
     );
 };
 
-orderSchema.methods.addOrderToOrderHistory = async function (productId) {
-    const order = this;
-    const lineItem = order.lineItems.find(lineItem => lineItem.product._id.equals(productId));
-    if (lineItem) {
+orderSchema.methods.addOrderToOrderHistory = async function (orderId) {
+    const orders = this;
+    const order = orders.findById(order => order._id.equals(orderId));
+    if (order) {
         return;
     } else {
-        const Product = mongoose.model('Product');
-        const product = await Product.findById(productId);
-        order.lineItems.push({ product });
+        orders.push({ order });
     }
-    return order.save();
+    return orders.save();
 };
 
 // Removes an item for sale on the AllProductsPage once a buyer has checked out with the item
-// orderSchema.methods.removeProductFromAllProductsPage = async function(productId) {
-//     const order = this;
-//     const lineItem = order.lineItems.find(lineItem => lineItem.product._id.equals(productId));
-//     const Product = mongoose.model('Product');
-//     const products = await Product.find({})
-//     if (lineItem in products) {
-//         const filteredProducts = products.filter()
-//     }
-// }
+orderSchema.methods.removeSoldProduct = async function(productId) {
+    const order = this;
+    const lineItem = order.lineItems.find(lineItem => lineItem.product._id.equals(productId));
+    const Product = mongoose.model('Product');
+    const products = await Product.find({})
+    while (lineItem in products) {
+        return products.filter(lineItem => lineItem.product._id !== productId)
+    }
+}
 
 module.exports = mongoose.model('Order', orderSchema)

@@ -2,21 +2,23 @@ const express = require('express');
 const router = express.Router();
 const ordersCtrl = require('../../controllers/api/orders');
 
-// All routes start with '/api/orders'
+// All routes start with '/api'
 
 // GET /api/orders
-router.get('/', ordersCtrl.index);
+router.get('/orders', ordersCtrl.index);
 // GET /api/orders/cart
-router.get('/cart', ordersCtrl.cart);
+router.get('/orders/cart', ordersCtrl.cart);
 // GET /api/orders/:id
-router.get('/:id', ordersCtrl.show);
+router.get('/orders/:id', ordersCtrl.show);
 // // POST /api/orders/ to order history
-// router.post('/', ordersCtrl.add);
+router.post('/orders', ordersCtrl.createOrderHistory);
 // POST /api/orders/cart/checkout
-router.post('/cart/checkout', ordersCtrl.checkout);
+router.post('/orders/cart/checkout', ordersCtrl.checkout);
 // POST /api/orders/cart/products/:id
-router.post('/cart/products/:id', ordersCtrl.addToCart);
+router.post('/orders/cart/products/:id', ordersCtrl.addToCart);
 // PUT /api/orders/cart 
-router.put('/cart/qty', ordersCtrl.setProductQtyInCart);
+router.put('/orders/cart/qty', ordersCtrl.setProductQtyInCart);
+// DELETE /api/products/:id
+router.delete('/products/:id', ordersCtrl.deleteProduct);
 
 module.exports = router;

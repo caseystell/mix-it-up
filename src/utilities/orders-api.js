@@ -35,3 +35,15 @@ export async function getById(orderId) {
 export function addOrderToOrderHistory(orderData) {
   return sendRequest(`${BASE_URL}`, 'POST', orderData)
 }
+
+// Retrieve a paid order for the logged in user
+export function getOrder(orderId={orderId}) {
+  return sendRequest(`${BASE_URL}/${orderId}`);
+}
+
+// Remove sold product from products
+export function removeSoldProduct(productId) {
+  return sendRequest(`/api/products/${productId}`, 'DELETE', {productId})
+}
+
+
