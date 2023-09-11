@@ -1,7 +1,7 @@
 import './OrderDetail.css';
 import LineItem from '../LineItem/LineItem';
 
-export default function OrderDetail({ order, orderHistory, setOrderHistory }) {
+export default function OrderDetail({ order }) {
 
   if (!order) return null;
 

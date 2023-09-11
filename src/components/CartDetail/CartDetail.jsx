@@ -48,8 +48,7 @@ export default function CartDetail({ order, handleRemoveQty, handleCheckout }) {
                     className="btn"
                     onClick={handleCheckout}
                     disabled={!lineItems.length}
-                  >
-                    Checkout</button></td>
+                  >Checkout</button></td>
               </tr>
             </tfoot>
           </table>
