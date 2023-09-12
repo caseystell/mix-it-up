@@ -32,7 +32,7 @@ export async function getById(orderId) {
 }
 
 // Retrieve a paid order for the logged in user
-export function getOrder(orderId={orderId}) {
+export function getOrder(orderId) {
   return sendRequest(`${BASE_URL}/${orderId}`);
 }
 

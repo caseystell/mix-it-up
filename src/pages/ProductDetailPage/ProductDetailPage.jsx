@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function ProductDetailPage({ products, setProducts, user, cart, setCart }) {
+export default function ProductDetailPage({ setProducts, user, setCart }) {
     const [product, setProduct] = useState();
     const navigate = useNavigate();
     let {productId} = useParams();

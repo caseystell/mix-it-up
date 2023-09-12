@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import CartDetail from '../../components/CartDetail/CartDetail';
 
-export default function NewOrderPage({ cart, setCart, setOrderHistory, handleCheckout }) {
+export default function NewOrderPage({ cart, setCart, handleCheckout }) {
 
   useEffect(function() {
     async function getCart() {
@@ -11,11 +11,6 @@ export default function NewOrderPage({ cart, setCart, setOrderHistory, handleChe
       setCart(cart);
     }
     getCart();
-    async function getOrderHistory() {
-      const order = await ordersAPI.getAll();
-      setOrderHistory(order);
-    }
-    getOrderHistory();
    }, []);
 
   async function handleRemoveQty(productId, newQty) {

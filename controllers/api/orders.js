@@ -48,21 +48,21 @@ async function index(req, res) {
 
 // Get order by orderId
 async function show(req, res) {
-  const order = await Order.findById(req.params.id);
+  const order = await Order.findById(req.body.orderId);
   res.json(order);
 }
 
 // When a cart changes to 'isPaid', copies cart to order history
 async function createOrderHistory(req, res) {
   const order = await Order.findById(req.params.id);
-  await order?.addOrderToOrderHistory(req.body.orderId);
+  await order.addOrderToOrderHistory(req.body.orderId);
   res.json(order);
 }
 
 async function deleteProduct(req, res) {
   const order = await Order.getOrder(req.user._id, req.params.id);
   const productId = await Product.getById(req.params.id);
-  await order.removeSoldProduct(productId);
+  await Product.removeSoldProduct(productId);
   res.json(order);
 }
 

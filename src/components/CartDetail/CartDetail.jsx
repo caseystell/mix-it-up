@@ -44,11 +44,13 @@ export default function CartDetail({ order, handleRemoveQty, handleCheckout }) {
                 <td></td>
                 <td>{order.totalQty} Items</td>
                 <td>${order.orderTotal?.toFixed(2)}</td>
+                {!order.isPaid &&
                 <td><button
                     className="btn"
-                    onClick={handleCheckout}
+                    onClick={() => handleCheckout(order._id)}
                     disabled={!lineItems.length}
                   >Checkout</button></td>
+                }
               </tr>
             </tfoot>
           </table>

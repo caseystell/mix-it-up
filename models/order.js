@@ -82,7 +82,7 @@ orderSchema.statics.getOrder = function(userId, orderId) {
 
 orderSchema.methods.addOrderToOrderHistory = async function(orderId) {
     const orders = this;
-    const order = orders.find(order => order._id.toString() === orderId);
+    const order = orders?.find(order => order?._id.toString() === orderId);
     console.log(order)
     if (order) {
         return;

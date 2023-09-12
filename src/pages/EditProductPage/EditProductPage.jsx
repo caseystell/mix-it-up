@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AddEditProduct from '../../components/AddEditProduct/AddEditProduct';
 import * as productsAPI from '../../utilities/products-api';
 
-export default function EditProductPage({ products, setProducts }) {
+export default function EditProductPage({}) {
     const [product, setProduct] = useState(null);
     let {productId} = useParams();
     const navigate = useNavigate();

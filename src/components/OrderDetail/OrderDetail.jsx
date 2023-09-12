@@ -1,5 +1,6 @@
 import './OrderDetail.css';
 import LineItem from '../LineItem/LineItem';
+import * as ordersAPI from '../../utilities/orders-api';
 
 export default function OrderDetail({ order }) {
 
