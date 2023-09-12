@@ -33,7 +33,6 @@ export default function CartDetail({ order, handleRemoveQty, handleCheckout }) {
                 <th>Product</th>
                 <th>Price</th>
                 <th>Remove</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>

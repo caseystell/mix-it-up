@@ -13,3 +13,10 @@ td {
     object-fit: cover;
     border-radius: 3px;
 }
+
+@media (max-width: 549px) {
+    .cart-img {
+        height: 50px;
+        width: 50px;
+    }
+}

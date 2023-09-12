@@ -99,9 +99,11 @@ orderSchema.methods.addOrderToOrderHistory = async function(orderId) {
 // Removes an item for sale on the AllProductsPage once a buyer has checked out with the item
 orderSchema.methods.removeSoldProduct = async function(productId) {
     const order = this;
-    const lineItem = order.lineItems.find(lineItem => lineItem.product._id.equals(productId));
+    const lineItem = order.lineItems.find(lineItem => lineItem.product._id === productId);
+    console.log(`order model productId: ${productId}`)
     const Product = mongoose.model('Product');
     const products = await Product.find({})
+    console.log(`all products are: ${products}`)
     while (lineItem in products) {
         return products.filter(lineItem => lineItem.product._id !== productId)
     }

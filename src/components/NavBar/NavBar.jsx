@@ -12,11 +12,11 @@ export default function NavBar({ user, setUser }) {
     <>
       <nav>
         <Link to="/products"><h1>MixItUp!</h1></Link>
-        <Link to="/products/new" className="btn">List!</Link>
-        <Link to="/orders/cart"><span className="fa fa-shopping-cart"></span></Link>
-        <Link to="/orders"><span className="fa fas fa-user-circle"></span></Link>
-        <span>Welcome, {user.name}!</span>
-        <Link to="" onClick={handleLogOut} className="btn">Log Out</Link>
+        <Link to="/products/new" className="btn tiny">List!</Link>
+        <Link to="/orders/cart"><span className="fa fa-shopping-cart tiny"></span></Link>
+        <Link to="/orders"><span className="fa fas fa-user-circle tiny"></span></Link>
+        <span className="welcome tiny">Welcome, {user.name}!</span>
+        <Link to="" onClick={handleLogOut} className="btn tiny">Log Out</Link>
       </nav>
     </>
   );
