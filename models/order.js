@@ -39,6 +39,10 @@ orderSchema.virtual('orderId').get(function() {
     return this.id.slice(-6).toUpperCase();
 });
 
+orderSchema.virtual('fullOrderId').get(function() {
+    return this.id;
+});
+
 orderSchema.statics.getCart = function(userId) {
     return this.findOneAndUpdate(
         { user: userId, isPaid: false },

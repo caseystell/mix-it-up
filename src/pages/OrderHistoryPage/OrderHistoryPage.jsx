@@ -4,10 +4,10 @@ import './OrderHistoryPage.css';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function OrderHistoryPage({ orders, orderHistory, setOrderHistory, products, setProducts, }) {
+export default function OrderHistoryPage({ orders, orderHistory, setOrderHistory, products, setProducts, user }) {
 
   orders = orderHistory?.map(order => 
-    <OrderDetail order={order} key={order._id} products={products} setProducts={setProducts}/>
+    <OrderDetail order={order} key={order._id} products={products} setProducts={setProducts} user={user}/>
   )
 
   useEffect(function() {

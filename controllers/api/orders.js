@@ -60,7 +60,7 @@ async function createOrderHistory(req, res) {
 }
 
 async function deleteProduct(req, res) {
-  const order = await Order.getOrder(req.user._id, req.params.id);
+  const order = await Order.getOrder(req.user._id, req.body.fullOrderId);
   const productId = await Product.getById(req.params.id);
   await Product.removeSoldProduct(productId);
   res.json(order);

@@ -20,29 +20,20 @@ export default function App() {
   const [orderHistory, setOrderHistory] = useState([]);
   const navigate = useNavigate();
 
-  async function handleCheckout(cart, orderId) {
+  async function handleCheckout(cart) {
     const newOrder = await ordersAPI.checkout(cart);
     const orders = await ordersAPI.getAll()
     setOrderHistory([...orders, newOrder]);
-    deleteOrderProductFromAllProducts(orderId)
+    removeOrderedProducts();
     navigate('/orders');
   }
 
-  async function findProductsInOrder(orderId) {
-    const order = await ordersAPI.getOrder(orderId);
-    console.log(`order is ${order}`);
-    console.log(`orderId is ${orderId}`);
-    let productIds = order?.map(lineItem => lineItem._id);
-    return productIds;
-  }
-
-  async function deleteOrderProductFromAllProducts(orderId) {
-    let productIds = await findProductsInOrder(orderId)
-    console.log(productIds)
-    await Promise.all(productIds.map(id => ordersAPI.removeSoldProduct(id)));
-    setProducts(allProducts => {
-        return allProducts.filter(product => !productIds.includes(product._id));
-    })
+  async function removeOrderedProducts() {
+    const orders = await ordersAPI.getAll()
+    const lineItemIds = await orders.map(order => order.lineItems.map(lineItem => lineItem.product._id))
+    console.log(`lineitemids are ${lineItemIds}`);
+    await Promise.all(lineItemIds.map(lineItemId => ordersAPI.removeSoldProduct(lineItemId)));
+    setProducts(allProducts => allProducts.filter(product => !lineItemIds.includes(product._id)))
   }
 
   return (
@@ -56,7 +47,7 @@ export default function App() {
               <Route path="/products/new" element={<CreateProductPage products={products} setProducts={setProducts}/>} />
               <Route path="/products/:productId" element={<ProductDetailPage user={user} setCart={setCart} setProducts={setProducts} />} />
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
-              <Route path="/orders" element={<OrderHistoryPage orders={orders} orderHistory={orderHistory} setOrderHistory={setOrderHistory} products={products} setProducts={setProducts} />} />
+              <Route path="/orders" element={<OrderHistoryPage orders={orders} orderHistory={orderHistory} setOrderHistory={setOrderHistory} products={products} setProducts={setProducts} user={user} />} />
               <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} handleCheckout={handleCheckout} />}/>
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>
