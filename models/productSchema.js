@@ -41,7 +41,7 @@ const productSchema = new Schema({
   },
   description: { type: String, required: true },
   price: { type: Number, required: true },
-  purchased: { type: Boolean, default: false },
+  qty: { type: Number, default: 1 },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
   timestamps: true

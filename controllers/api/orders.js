@@ -9,7 +9,7 @@ module.exports = {
   show,
   createOrderHistory,
   setProductQtyInCart,
-  deleteProduct
+  // deleteProduct
 };
 
 // A cart is the unpaid order for a user
@@ -42,7 +42,7 @@ async function setProductQtyInCart(req, res) {
 
 // Get All orders
 async function index(req, res) {
-  const orders = await Order.find({});
+  const orders = await Order.find({ user: req.user._id});
   res.json(orders);
 }
 
@@ -59,11 +59,15 @@ async function createOrderHistory(req, res) {
   res.json(order);
 }
 
-async function deleteProduct(req, res) {
-  const order = await Order.getOrder(req.user._id, req.body.fullOrderId);
-  console.log(`is this controller delete function happening? ${order}`)
-  const productId = await Product.getById(req.params.id);
-  await Product.removeSoldProduct(productId);
-  res.json(order);
-}
+// async function deleteProduct(req, res) {
+//   const orders = await Order.getAllOrders(req.user._id);
+//   const mostRecentOrder = orders.at(-1);
+//   console.log(`most recent order: ${mostRecentOrder}`)
+//   const lineItemIds = await mostRecentOrder.lineItems.map(lineItem => lineItem.product._id.toString());
+//   console.log(`lineitemids are ${lineItemIds}`)
+//   for (let lineItemId in lineItemIds) {
+//     await Order.removeSoldProduct(lineItemId);
+//   }
+//   res.json(orders);
+// }
 

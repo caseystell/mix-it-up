@@ -24,16 +24,7 @@ export default function App() {
     const newOrder = await ordersAPI.checkout(cart);
     const orders = await ordersAPI.getAll()
     setOrderHistory([...orders, newOrder]);
-    removeOrderedProducts();
     navigate('/orders');
-  }
-
-  async function removeOrderedProducts() {
-    const orders = await ordersAPI.getAll()
-    const lineItemIds = await orders.map(order => order.lineItems.map(lineItem => lineItem.product._id))
-    console.log(`lineitemids are ${lineItemIds}`);
-    await Promise.all(lineItemIds.map(lineItemId => ordersAPI.removeSoldProduct(lineItemId)));
-    setProducts(allProducts => allProducts.filter(product => !lineItemIds.includes(product._id)))
   }
 
   return (

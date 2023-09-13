@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productsCtrl = require('../../controllers/api/products');
+const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // All routes start with '/api/products'
 
@@ -9,12 +10,12 @@ router.get('/', productsCtrl.index);
 // GET /api/products/:id
 router.get('/:id', productsCtrl.show);
 // GET /api/products/:id/edit
-router.get('/:id/edit', productsCtrl.edit);
+router.get('/:id/edit', ensureLoggedIn, productsCtrl.edit);
 // POST /api/products
-router.post('/', productsCtrl.create);
+router.post('/', ensureLoggedIn, productsCtrl.create);
 // EDIT /api/products/:id
-router.put('/:id', productsCtrl.update);
+router.put('/:id', ensureLoggedIn, productsCtrl.update);
 // DELETE /api/products/:id
-router.delete('/:id', productsCtrl.delete);
+router.delete('/:id', ensureLoggedIn, productsCtrl.delete);
 
 module.exports = router;

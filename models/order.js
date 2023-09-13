@@ -39,10 +39,6 @@ orderSchema.virtual('orderId').get(function() {
     return this.id.slice(-6).toUpperCase();
 });
 
-orderSchema.virtual('fullOrderId').get(function() {
-    return this.id;
-});
-
 orderSchema.statics.getCart = function(userId) {
     return this.findOneAndUpdate(
         { user: userId, isPaid: false },
@@ -78,10 +74,13 @@ orderSchema.methods.setProductQty = function(productId, newQty) {
 orderSchema.statics.getOrder = function(userId, orderId) {
     return this.findOneAndUpdate(
         { user: userId, isPaid: true },
-        { user: userId },
-        { order: orderId},
+        { user: userId , order: orderId },
         { upsert: true, new: true }
     );
+};
+
+orderSchema.statics.getAllOrders = function(userId) {
+    return this.find({ user: userId });
 };
 
 orderSchema.methods.addOrderToOrderHistory = async function(orderId) {
@@ -97,16 +96,16 @@ orderSchema.methods.addOrderToOrderHistory = async function(orderId) {
 };
 
 // Removes an item for sale on the AllProductsPage once a buyer has checked out with the item
-orderSchema.methods.removeSoldProduct = async function(productId) {
-    const order = this;
-    const lineItem = order.lineItems.find(lineItem => lineItem.product._id === productId);
-    console.log(`order model productId: ${productId}`)
-    const Product = mongoose.model('Product');
-    const products = await Product.find({})
-    console.log(`all products are: ${products}`)
-    while (lineItem in products) {
-        return products.filter(lineItem => lineItem.product._id !== productId)
-    }
-}
+// orderSchema.statics.removeSoldProduct = async function(productId) {
+//     const order = this;
+//     const lineItem = order.lineItems.find(lineItem => lineItem.product._id === productId);
+//     console.log(`order model productId: ${productId}`)
+//     const Product = mongoose.model('Product');
+//     const products = await Product.find({})
+//     console.log(`all products are: ${products}`)
+//     while (lineItem in products) {
+//         return products.filter(lineItem => lineItem.product._id !== productId)
+//     }
+// }
 
 module.exports = mongoose.model('Order', orderSchema)

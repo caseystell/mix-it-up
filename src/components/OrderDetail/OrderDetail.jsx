@@ -1,6 +1,5 @@
 import './OrderDetail.css';
 import LineItem from '../LineItem/LineItem';
-import * as ordersAPI from '../../utilities/orders-api';
 
 export default function OrderDetail({ order, user }) {
 
@@ -16,7 +15,7 @@ export default function OrderDetail({ order, user }) {
 
   return (
     <>
-      {order.isPaid && // (user._id === order.user._id) && // 2nd part renders no orders at all
+      {order.isPaid && 
         <div className="OrderDetail">
           <div className="order-heading">
             <h2>Order <span className="grayText">{order.orderId}</span></h2>
