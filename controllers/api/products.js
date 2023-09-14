@@ -7,8 +7,6 @@ module.exports = {
   edit: editProduct,
   update: updateProduct,
   delete: deleteProduct,
-  categoryIndex,
-  categoryShow
 };
 
 async function index(req, res) {
@@ -59,14 +57,4 @@ async function updateProduct(req, res) {
 async function deleteProduct(req, res) {
   const product = await Product.deleteOne({ _id: req.params.id, user: req.user._id });
   res.json(product);
-}
-
-async function categoryIndex(req, res) {
-  const categories = await Product.categories.find({});
-  res.json(categories);
-}
-
-async function categoryShow(req, res) {
-  const category = await Product.categories.findById(req.params.id);
-  res.json(category);
 }
