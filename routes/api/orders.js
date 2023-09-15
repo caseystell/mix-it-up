@@ -20,6 +20,6 @@ router.post('/orders/cart/products/:id', ensureLoggedIn, ordersCtrl.addToCart);
 // PUT /api/orders/cart 
 router.put('/orders/cart/qty', ensureLoggedIn, ordersCtrl.setProductQtyInCart);
 // DELETE /api/products/:id
-// router.delete('/products/:id/delete', ensureLoggedIn, ordersCtrl.deleteProduct);
+router.delete('/products/:id/delete', ensureLoggedIn, ordersCtrl.deleteProduct);
 
 module.exports = router;

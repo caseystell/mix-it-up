@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './OrderHistoryPage.css';
-import OrderDetail from '../../components/OrderDetail/OrderDetail';
+import OrderCard from '../../components/OrderCard/OrderCard';
 import * as ordersAPI from '../../utilities/orders-api';
 
 export default function OrderHistoryPage({ orders, orderHistory, setOrderHistory, products, setProducts, user }) {
 
   orders = orderHistory?.map(order => 
-    <OrderDetail order={order} key={order._id} products={products} setProducts={setProducts} user={user}/>
+    <OrderCard order={order} key={order._id} products={products} setProducts={setProducts} user={user}/>
   )
 
   useEffect(function() {

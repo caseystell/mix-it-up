@@ -10,6 +10,7 @@ import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductDetailPage from '../ProductDetailPage/ProductDetailPage';
 import EditProductPage from '../EditProductPage/EditProductPage';
+import OrderDetailPage from '../OrderDetailPage/OrderDetailPage';
 import * as ordersAPI from '../../utilities/orders-api';
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
               <Route path="/orders" element={<OrderHistoryPage orders={orders} orderHistory={orderHistory} setOrderHistory={setOrderHistory} products={products} setProducts={setProducts} user={user} />} />
               <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} handleCheckout={handleCheckout} />}/>
+              <Route path="/orders/:orderId" element={<OrderDetailPage  />}/>
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>
           </>

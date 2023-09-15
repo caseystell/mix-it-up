@@ -1,0 +1,22 @@
+.card-total {
+    display: flex;
+    justify-content: center;
+}
+
+.card-total > span {
+    padding: 0.5rem;
+    color: #1E1E1E;
+}
+
+.OrderCard {
+    background-color: #F0F0F0;
+    background-size: contain;
+    margin: 1rem 5rem;
+    padding: 1rem;
+    border-radius: 3px;
+    transition: all .2s ease-in-out;
+}
+
+.OrderCard:hover {
+    transform: scale(1.03);
+}

@@ -36,4 +36,8 @@ export function getOrder(orderId) {
   return sendRequest(`${BASE_URL}/${orderId}`);
 }
 
+export function removeSoldProduct(productId, newQty) {
+  return sendRequest(`/api/products/${productId}/delete`, 'DELETE', { productId, newQty });
+}
+
 
