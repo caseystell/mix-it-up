@@ -1,13 +1,12 @@
 import './OrderDetailPage.css';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import LineItem from '../../components/LineItem/LineItem';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function OrderDetailPage({  }) {
+export default function OrderDetailPage({ }) {
 
   const [order, setOrder] = useState();
-  const navigate = useNavigate();
   let {orderId} = useParams();
 
   useEffect(function() {
@@ -18,7 +17,7 @@ export default function OrderDetailPage({  }) {
     getOrderById(orderId);
   }, [orderId]);
 
-  if (!order) return null;
+  // if (!order) return null;
 
   const lineItems = order.lineItems?.map(product =>
     <LineItem
@@ -31,7 +30,7 @@ export default function OrderDetailPage({  }) {
   return (
     
     <div className="OrderDetail">
-    { order.isPaid &&
+    { order?.isPaid &&
         <>
         <div className="order-heading">
             <h2>Order <span className="grayText">{order.orderId}</span></h2>
@@ -46,7 +45,7 @@ export default function OrderDetailPage({  }) {
             </tr>
             </thead>
             <tbody>
-            {lineItems}
+              {lineItems}
             </tbody>
             <tfoot className="total">
             <tr>

@@ -60,14 +60,12 @@ async function createOrderHistory(req, res) {
 }
 
 async function deleteProduct(req, res) {
-  const orders = await Order.getAllOrders(req.user._id);
-  const mostRecentOrder = orders.at(-1);
-  console.log(`most recent order: ${mostRecentOrder}`)
-  const lineItemIds = await mostRecentOrder.lineItems.map(lineItem => lineItem.product._id.toString());
+  const order = await Order.findById(req.params.id);
+  const lineItemIds = await order.lineItems.map(lineItem => lineItem.product._id.toString());
   console.log(`lineitemids are ${lineItemIds}`)
   for (let lineItemId in lineItemIds) {
-    await Order.removeSoldProduct(lineItemId);
+    console.log(lineItemId)
   }
-  res.json(orders);
+  res.json(order);
 }
 

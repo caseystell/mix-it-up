@@ -40,8 +40,8 @@ export default function App() {
               <Route path="/products/:productId" element={<ProductDetailPage user={user} setCart={setCart} setProducts={setProducts} />} />
               <Route path="/products/:productId/edit" element={<EditProductPage />} />
               <Route path="/orders" element={<OrderHistoryPage orders={orders} orderHistory={orderHistory} setOrderHistory={setOrderHistory} products={products} setProducts={setProducts} user={user} />} />
-              <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} handleCheckout={handleCheckout} />}/>
-              <Route path="/orders/:orderId" element={<OrderDetailPage  />}/>
+              <Route path="/orders/cart" element={<NewOrderPage cart={cart} setCart={setCart} handleCheckout={handleCheckout} setProducts={setProducts} />}/>
+              <Route path="/orders/:orderId" element={<OrderDetailPage />}/>
               <Route path="/*" element={<Navigate to="/products" />} />
             </Routes>
           </>

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import CartDetail from '../../components/CartDetail/CartDetail';
 
-export default function NewOrderPage({ cart, setCart, handleCheckout }) {
+export default function NewOrderPage({ cart, setCart, handleCheckout, setProducts }) {
 
   useEffect(function() {
     async function getCart() {
@@ -20,7 +20,7 @@ export default function NewOrderPage({ cart, setCart, handleCheckout }) {
 
   return (
     <main className="NewOrderPage">
-      <CartDetail order={cart} handleRemoveQty={handleRemoveQty} handleCheckout={handleCheckout} />
+      <CartDetail order={cart} handleRemoveQty={handleRemoveQty} handleCheckout={handleCheckout} setProducts={setProducts} />
     </main>
   );
 }
